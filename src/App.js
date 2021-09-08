@@ -17,6 +17,7 @@ const App = () => {
   const [theme, setTheme] = useState("dark");
   const [data, setData] = useState({});
   const [isError, setIsError] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [userInput, setUserInput] = useState("");
 
   const themeToggler = () => {
@@ -30,7 +31,6 @@ const App = () => {
       const res = await fetch(URL);
       const data = await res.json();
       setData(data);
-      console.log(data);
       setUserInput("");
     } catch (error) {
       setIsError(true);
@@ -40,22 +40,24 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsActive(true);
     if (!data) return;
     fetchData();
+    setIsActive(false);
   };
 
   return (
     <>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-        <Globals />
         <Main>
+          <Globals />
           <Header theme={theme} themeToggler={themeToggler} />
           <Search
             handleSubmit={handleSubmit}
             userInput={userInput}
             setUserInput={setUserInput}
           />
-          <User data={data} />
+          {!isActive && <User data={data} />}
         </Main>
       </ThemeProvider>
     </>

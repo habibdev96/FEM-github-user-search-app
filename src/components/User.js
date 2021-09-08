@@ -43,6 +43,12 @@ const Container = styled.div`
     ${textStyles}
     color: ${({ theme }) => theme.primary};
     font-size: 1.6rem;
+    transition: var(--mainTransition);
+
+    &:hover,
+    &:focus {
+      color: ${({ theme }) => theme.mainText};
+    }
   }
 
   .bio {
@@ -88,6 +94,11 @@ const Container = styled.div`
     color: ${({ theme }) => theme.mainText};
     font-size: 1.5rem;
     transition: var(--mainTransition);
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
 
     &:hover,
     &:focus {
@@ -153,13 +164,16 @@ const User = ({ data }) => {
             </div>
           </div>
           <footer className="links">
-            <a href="#!" className="link">
+            <a href="#!" className={`link ${location === null && "disabled"}`}>
               <span className="link-text">
                 <MdLocationOn className="link-icon" />
                 {location === null ? "Not Available" : `${location}`}
               </span>
             </a>
-            <a href="#!" className="link">
+            <a
+              href="#!"
+              className={`link ${twitter_username === null && "disabled"}`}
+            >
               <span className="link-text">
                 <FaTwitter className="link-icon" />
                 {twitter_username === null
@@ -167,13 +181,13 @@ const User = ({ data }) => {
                   : `${twitter_username}`}
               </span>
             </a>
-            <a href="#!" className="link">
+            <a href="#!" className={`link ${blog === "" && "disabled"}`}>
               <FiLink className="link-icon" />
               <span className="link-text">
                 {blog === "" ? "Not Available" : `${blog}`}
               </span>
             </a>
-            <a href="#!" className="link">
+            <a href="#!" className={`link ${company === null && "disabled"}`}>
               <BsBuilding className="link-icon" />
               <span className="link-text">
                 {company === null ? "Not Available" : `${company}`}
