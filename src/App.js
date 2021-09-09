@@ -16,7 +16,6 @@ const Main = styled.main`
 const App = () => {
   const [theme, setTheme] = useState("dark");
   const [data, setData] = useState({});
-  const [isError, setIsError] = useState(false);
   const [isActive, setIsActive] = useState(true);
   const [userInput, setUserInput] = useState("");
 
@@ -26,14 +25,12 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      setIsError(false);
       const URL = `https://api.github.com/users/${userInput}`;
       const res = await fetch(URL);
       const data = await res.json();
       setData(data);
       setUserInput("");
     } catch (error) {
-      setIsError(true);
       console.log(error);
     }
   };

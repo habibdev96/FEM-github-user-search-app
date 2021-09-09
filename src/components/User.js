@@ -6,6 +6,11 @@ import { FaTwitter } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 import { BsBuilding } from "react-icons/bs";
 
+const ErrorHeading = styled.h2`
+  color: ${({ theme }) => theme.mainText};
+  font-size: 2rem;
+`;
+
 const Container = styled.div`
   background-color: ${({ theme }) => theme.appBg};
   display: grid;
@@ -129,75 +134,84 @@ const User = ({ data }) => {
     blog,
   } = data;
 
-  return (
-    <article>
-      <Container>
-        <img src={avatar_url} alt={login} className="avatar" />
-        <div className="info">
-          <header className="header">
-            <div className="header-title">
-              <h2 className="username">{name}</h2>
-              <p className="created-at">{created_at}</p>
+  if (data.message === "Not Found") {
+    return <ErrorHeading>user not found...</ErrorHeading>;
+  }
+
+  if (data.message !== "Not Found") {
+    return (
+      <article>
+        <Container>
+          <img src={avatar_url} alt={login} className="avatar" />
+          <div className="info">
+            <header className="header">
+              <div className="header-title">
+                <h2 className="username">{name}</h2>
+                <p className="created-at">{created_at}</p>
+              </div>
+              <a
+                href={html_url}
+                target="_blank"
+                rel="noreferrer"
+                className="login"
+              >
+                @{login}
+              </a>
+              <p className="bio">{bio}</p>
+            </header>
+            <div className="stats">
+              <div className="stat">
+                <p className="stat-title">Repos</p>
+                <h5 className="stat-number">{public_repos}</h5>
+              </div>
+              <div className="stat">
+                <p className="stat-title">Followers</p>
+                <h5 className="stat-number">{followers}</h5>
+              </div>
+              <div className="stat">
+                <p className="stat-title">Following</p>
+                <h5 className="stat-number">{following}</h5>
+              </div>
             </div>
-            <a
-              href={html_url}
-              target="_blank"
-              rel="noreferrer"
-              className="login"
-            >
-              @{login}
-            </a>
-            <p className="bio">{bio}</p>
-          </header>
-          <div className="stats">
-            <div className="stat">
-              <p className="stat-title">Repos</p>
-              <h5 className="stat-number">{public_repos}</h5>
-            </div>
-            <div className="stat">
-              <p className="stat-title">Followers</p>
-              <h5 className="stat-number">{followers}</h5>
-            </div>
-            <div className="stat">
-              <p className="stat-title">Following</p>
-              <h5 className="stat-number">{following}</h5>
-            </div>
+            <footer className="links">
+              <a
+                href="#!"
+                className={`link ${location === null && "disabled"}`}
+              >
+                <span className="link-text">
+                  <MdLocationOn className="link-icon" />
+                  {location === null ? "Not Available" : `${location}`}
+                </span>
+              </a>
+              <a
+                href="#!"
+                className={`link ${twitter_username === null && "disabled"}`}
+              >
+                <span className="link-text">
+                  <FaTwitter className="link-icon" />
+                  {twitter_username === null
+                    ? "Not Available"
+                    : `${twitter_username}`}
+                </span>
+              </a>
+              <a href="#!" className={`link ${blog === "" && "disabled"}`}>
+                <FiLink className="link-icon" />
+                <span className="link-text">
+                  {blog === "" ? "Not Available" : `${blog}`}
+                </span>
+              </a>
+              <a href="#!" className={`link ${company === null && "disabled"}`}>
+                <BsBuilding className="link-icon" />
+                <span className="link-text">
+                  {company === null ? "Not Available" : `${company}`}
+                </span>
+              </a>
+            </footer>
           </div>
-          <footer className="links">
-            <a href="#!" className={`link ${location === null && "disabled"}`}>
-              <span className="link-text">
-                <MdLocationOn className="link-icon" />
-                {location === null ? "Not Available" : `${location}`}
-              </span>
-            </a>
-            <a
-              href="#!"
-              className={`link ${twitter_username === null && "disabled"}`}
-            >
-              <span className="link-text">
-                <FaTwitter className="link-icon" />
-                {twitter_username === null
-                  ? "Not Available"
-                  : `${twitter_username}`}
-              </span>
-            </a>
-            <a href="#!" className={`link ${blog === "" && "disabled"}`}>
-              <FiLink className="link-icon" />
-              <span className="link-text">
-                {blog === "" ? "Not Available" : `${blog}`}
-              </span>
-            </a>
-            <a href="#!" className={`link ${company === null && "disabled"}`}>
-              <BsBuilding className="link-icon" />
-              <span className="link-text">
-                {company === null ? "Not Available" : `${company}`}
-              </span>
-            </a>
-          </footer>
-        </div>
-      </Container>
-    </article>
-  );
+        </Container>
+      </article>
+    );
+  }
 };
 
 export default User;
