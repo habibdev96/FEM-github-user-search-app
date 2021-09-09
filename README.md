@@ -2,6 +2,8 @@
 
 search app application challenge for frontend mentor
 
+app: https://fem-github-user-search-app-challenge.netlify.app/
+
 #### Features
 - dark/light mode toggle
 - search github users
