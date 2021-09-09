@@ -5,6 +5,7 @@ import logo from "../assets/logo/habibdevgif.gif";
 const Article = styled.article`
   ${flexCenter};
   flex-wrap: wrap;
+  padding: 2rem;
 
   .tag-heading {
     ${textStyles};
