@@ -5,6 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 import { FaTwitter } from "react-icons/fa";
 import { FiLink } from "react-icons/fi";
 import { BsBuilding } from "react-icons/bs";
+import Responsive from "../abstracts/Responsive";
 
 const ErrorHeading = styled.h2`
   color: ${({ theme }) => theme.mainText};
@@ -20,16 +21,26 @@ const Container = styled.div`
   box-shadow: var(--mainShadow);
   transition: var(--mainTransition);
 
+  ${Responsive.md`
+    grid-template-columns: 1fr;   
+  `}
+
   .avatar {
     width: 20rem;
     height: 20rem;
     border-radius: 50%;
+
+    ${Responsive.md`
+      margin: 2rem auto;
+    `}
   }
 
   .header-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 
   .username {
@@ -68,6 +79,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
     padding: 2rem;
     margin: 2rem 0;
     border-radius: var(--mainRadius);
@@ -91,6 +104,10 @@ const Container = styled.div`
     grid-template-columns: repeat(2, 1fr);
     align-items: flex-start;
     gap: 2rem;
+
+    ${Responsive.sm`
+      grid-template-columns: 1fr;   
+    `}
   }
 
   .link {

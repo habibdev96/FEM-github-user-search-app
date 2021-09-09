@@ -2,10 +2,8 @@ import { css } from "styled-components";
 
 const breakpoints = {
   xs: "420px",
-  sm: "500px",
-  md: "770px",
-  lg: "910px",
-  xl: "1150px",
+  sm: "505px",
+  md: "700px",
 };
 
 const Responsive = Object.keys(breakpoints).reduce((accumulator, label) => {

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
 import { textStyles } from "../abstracts/Mixins";
+import Responsive from "../abstracts/Responsive";
 
 const Form = styled.form`
   margin: 2rem 0;
@@ -13,6 +14,10 @@ const Form = styled.form`
     position: absolute;
     top: 1.8rem;
     left: 1rem;
+
+    ${Responsive.xs`
+      top: 1.2rem;
+    `}
   }
 
   .search {
@@ -27,6 +32,10 @@ const Form = styled.form`
     border-radius: var(--mainRadius);
     box-shadow: var(--mainShadow);
     transition: var(--mainTransition);
+
+    ${Responsive.xs`
+      font-size: 1.3rem;   
+    `}
   }
 
   .submit {
@@ -47,6 +56,12 @@ const Form = styled.form`
     &:focus {
       opacity: 0.8;
     }
+
+    ${Responsive.sm`
+      position: static; 
+      margin: 2rem 0;
+      width: 100%;
+    `}
   }
 `;
 
