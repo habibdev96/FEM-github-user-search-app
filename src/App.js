@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { Globals } from "./abstracts/Globals";
-import { sectionSpacingLg } from "./abstracts/Mixins";
+import { sectionSpacingLg, sectionSpacingSm } from "./abstracts/Mixins";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./abstracts/Themes";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import User from "./components/User";
+import Tag from "./components/Tag";
+import Responsive from "./abstracts/Responsive";
 
 const Main = styled.main`
   ${sectionSpacingLg}
   max-width: 800px;
   margin: 0 auto;
+
+  ${Responsive.md`
+    ${sectionSpacingSm}
+  `}
 `;
 
 const App = () => {
@@ -56,6 +62,7 @@ const App = () => {
           />
           {!isActive && <User data={data} />}
         </Main>
+        <Tag />
       </ThemeProvider>
     </>
   );
