@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { FiSearch } from "react-icons/fi";
-import { textStyles } from "../abstracts/Mixins";
-import Responsive from "../abstracts/Responsive";
+import React from 'react';
+import styled from 'styled-components';
+import { FiSearch } from 'react-icons/fi';
+import { textStyles } from '../abstracts/Mixins';
+import Responsive from '../abstracts/Responsive';
 
 const Form = styled.form`
   margin: 2rem 0;
@@ -68,15 +68,15 @@ const Form = styled.form`
 const Search = ({ handleSubmit, userInput, setUserInput }) => {
   return (
     <Form onSubmit={handleSubmit}>
-      <FiSearch className="icon" />
+      <FiSearch className='icon' />
       <input
-        type="text"
-        placeholder="Search Github username..."
-        className="search"
+        type='text'
+        placeholder='Search Github username...'
+        className='search'
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
       />
-      <button type="submit" className="submit">
+      <button type='submit' className='submit'>
         Search
       </button>
     </Form>

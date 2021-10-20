@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { flexCenter, textStyles, headingStyles } from "../abstracts/Mixins";
-import logo from "../assets/logo/habibdevgif.gif";
+import styled from 'styled-components';
+import { flexCenter, textStyles, headingStyles } from '../abstracts/Mixins';
+import logo from '../assets/logo/habibdevgif.gif';
 
 const Article = styled.article`
   ${flexCenter};
@@ -32,27 +32,27 @@ const Article = styled.article`
 function Tag() {
   return (
     <Article>
-      <h3 className="tag-heading">
-        project for{" "}
+      <h3 className='tag-heading'>
+        project for{' '}
         <a
-          href="https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6"
-          target="_blank"
-          rel="noreferrer"
-          className="tag-link"
+          href='https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6'
+          target='_blank'
+          rel='noreferrer'
+          className='tag-link'
         >
           frontend mentor
-        </a>{" "}
-        coded by{" "}
+        </a>{' '}
+        coded by{' '}
         <a
-          href="https://github.com/habibdev96"
-          target="_blank"
-          rel="noreferrer"
-          className="tag-link"
+          href='https://github.com/habibdev96'
+          target='_blank'
+          rel='noreferrer'
+          className='tag-link'
         >
-          habibdev{" "}
+          habibdev{' '}
         </a>
       </h3>
-      <img src={logo} alt="logo" className="tag-logo" />
+      <img src={logo} alt='logo' className='tag-logo' />
     </Article>
   );
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { headingStyles, textStyles } from "../abstracts/Mixins";
-import { FiSun, FiMoon } from "react-icons/fi";
+import React from 'react';
+import styled from 'styled-components';
+import { headingStyles, textStyles } from '../abstracts/Mixins';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 const Container = styled.div`
   display: flex;
@@ -47,13 +47,13 @@ const Header = ({ theme, themeToggler }) => {
   return (
     <header>
       <Container>
-        <h1 className="logo">devfinder</h1>
-        <button className="toggler" onClick={themeToggler}>
-          {theme === "light" ? "dark" : "light"}
-          {theme === "light" ? (
-            <FiMoon className="icon" />
+        <h1 className='logo'>devfinder</h1>
+        <button className='toggler' onClick={themeToggler}>
+          {theme === 'light' ? 'dark' : 'light'}
+          {theme === 'light' ? (
+            <FiMoon className='icon' />
           ) : (
-            <FiSun className="icon" />
+            <FiSun className='icon' />
           )}
         </button>
       </Container>
